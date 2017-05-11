@@ -116,7 +116,8 @@ var Versions = React.createClass({
     console.log(url);
     var key = 0;
     //check if version in url
-    var ver_in_url = getParameterByName("version", url);
+    var ver_in_url = getParameterByName("version", url) ||
+      self.state.versions[self.state.versions.length -1];
     var doi = getParameterByName("doi", url);
     console.log("Showing version: " + ver_in_url);
     console.log(self.state.versions);
@@ -124,8 +125,7 @@ var Versions = React.createClass({
       version_list = self.state.versions.reverse().map(function(version) {
         var ver_url = "/details?doi=" + doi + "&version=" + versionID.versionID;
         key++;
-
-        if (ver_in_url == version.versionID) {
+        if ((ver_in_url == version.versionID)){
           return (
             <a href={ver_url} key={key}>
               {" "}
