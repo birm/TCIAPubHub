@@ -121,8 +121,8 @@ var Versions = React.createClass({
     console.log("Showing version: " + ver_in_url);
     console.log(self.state.versions);
     if (self.state.versions) {
-      version_list = self.state.versions.map(function(version) {
-        var ver_url = "/details?doi=" + doi + "&version=" + version.versionID;
+      version_list = self.state.versions.reverse().map(function(version) {
+        var ver_url = "/details?doi=" + doi + "&version=" + versionID.versionID;
         key++;
 
         if (ver_in_url == version.versionID) {
